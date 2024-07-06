@@ -1,0 +1,11 @@
+langserve[all]
+python-dotenv
+langchain
+langchain_cohere
+bs4
+langchain_community
+fastapi
+faiss-cpu
+langchainhub
+wikipedia
+streamlit
