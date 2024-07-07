@@ -70,4 +70,4 @@ If you would like to contribute to Balram, please follow these steps:
 5. Submit a pull request
 
 # 💻 Interface
-![Interface Image](https://github.com/CozyCone/Balram/tree/main/Balram/Interface%20image)
+![Interface Image](https://github.com/CozyCone/Balram/blob/main/Balram/Interface%20image/Example.png)
