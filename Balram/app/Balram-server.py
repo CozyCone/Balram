@@ -29,6 +29,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 cohere_api_key = os.environ['COHERE_API_KEY']
+tavily_api_key = os.environ['TAVILY_API_KEY']
 
 llm = ChatCohere(cohere_api_key=cohere_api_key, temperature=0.3)
 
@@ -63,17 +64,18 @@ wikipedia = WikipediaQueryRun(
     api_wrapper=WikipediaAPIWrapper(
         top_k_results=1,
         doc_content_chars_max=300),
-    description = 'Use this for only farming related queries and nothing else at all! If anything else is entered just say you dont know that')
+    description = 'Use this for crop management ,pest control ,general farming queries, including basic queries and recommendations .and nothing else at all! If anything else is entered just say you dont know that')
 
 retriver_tool = create_retriever_tool(
     retriever=compression_retriever, name='Vectored DB',
-    description='Use this for only farming related queries and nothing else at all! If anything else is entered just say you dont know that')
+    description='Use this for information regarding pesticides and nothing else at all! If anything else is entered just say you dont know that')
 
 tavily = TavilySearchResults(
     max_results=3,
     include_answer=True,
     include_raw_content=True,
-    description = 'Use this for only farming related queries and nothing else at all! If anything else is entered just say you dont know that'
+    description = 'Use this for real-time information retrieval such as weather forecasts, real-time market prices,etc. If anything else is entered just say you dont know that',
+    tavily_api_key = tavily_api_key
 )
 
 tools = [wikipedia, retriver_tool, tavily]
