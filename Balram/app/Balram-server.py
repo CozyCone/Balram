@@ -67,7 +67,8 @@ wikipedia = WikipediaQueryRun(
     description = 'Use this for crop management ,pest control ,general farming queries, including basic queries and recommendations .and nothing else at all! If anything else is entered just say you dont know that')
 
 retriver_tool = create_retriever_tool(
-    retriever=compression_retriever, name='Vectored DB',
+    retriever=compression_retriever,
+    name='Vectored DB',
     description='Use this for information regarding pesticides and nothing else at all! If anything else is entered just say you dont know that')
 
 tavily = TavilySearchResults(
