@@ -34,7 +34,6 @@ llm = ChatCohere(cohere_api_key=cohere_api_key, temperature=0.3)
 
 # load retriever
 import bs4
-from langchain.tools import WikipediaQueryRun
 
 loader = WebBaseLoader(web_paths=[
     'https://en.wikipedia.org/wiki/Pest_control#:~:text=In%20agriculture%2C%20pests%20are%20kept,of%20a%20certain%20pest%20species.',
