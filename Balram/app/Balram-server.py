@@ -59,11 +59,16 @@ base_compressor = CohereRerank()
 
 compression_retriever = ContextualCompressionRetriever(base_compressor=base_compressor, base_retriever=retriever)
 
-wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper(top_k_results=1, doc_content_chars_max=300))
-retriver_tool = create_retriever_tool(retriever=compression_retriever, name='Vectored DB',
-                                      description='use this for any queries regarding pest control')
+wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper(top_k_results=1, doc_content_chars_max=300),description = 'use this for any queries regarding pest control')
+retriver_tool = create_retriever_tool(retriever=compression_retriever, name='Vectored DB',description='use this for any queries regarding pest control',)
+tavily = TavilySearchResults(
+    max_results=3,
+    include_answer=True,
+    include_raw_content=True,
+    description = 'use this for any queries regarding pest control'
+)
 
-tools = [wikipedia, retriver_tool]
+tools = [wikipedia, retriver_tool, tavily]
 
 memory = ConversationBufferMemory(return_messages=True, memory_key='chat_history')
 
