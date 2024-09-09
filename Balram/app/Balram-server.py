@@ -64,22 +64,28 @@ wikipedia = WikipediaQueryRun(
     api_wrapper=WikipediaAPIWrapper(
         top_k_results=1,
         doc_content_chars_max=300),
-    description = 'Use this for crop management ,pest control ,general farming queries, including basic queries and recommendations .and nothing else at all! If anything else is entered just say you dont know that')
-
-retriver_tool = create_retriever_tool(
+    description='This tool is designed to handle general crop management, pest control, and basic farming queries, \
+        including agricultural techniques, common farming challenges, and recommended practices. Use this for queries like how to manage soil fertility,\
+        pest identification, crop rotation methods, or general farming terms"'
+)
+retriever_tool = create_retriever_tool(
     retriever=compression_retriever,
     name='Vectored DB',
-    description='Use this for information regarding pesticides and nothing else at all! If anything else is entered just say you dont know that')
+    description='This tool specializes in providing detailed information about pesticides, including their types, usage, safety guidelines, \
+        and application methods. Use this tool to answer queries related to pest control chemicals, organic pesticides, and how to apply them safely."'
+)
+
 
 tavily = TavilySearchResults(
     max_results=3,
     include_answer=True,
     include_raw_content=True,
-    description = 'Use this for real-time information retrieval such as weather forecasts, real-time market prices,etc. If anything else is entered just say you dont know that',
-    tavily_api_key = tavily_api_key
+    description='This tool is for retrieving real-time information related to agriculture, including weather forecasts, current market prices,\
+        and other time-sensitive farming data. Use this tool when the user asks about today’s crop prices, current weather, or anything that requires up-to-date information."'
 )
 
-tools = [wikipedia, retriver_tool, tavily]
+
+tools = [wikipedia, retriever_tool, tavily]
 
 memory = ConversationBufferMemory(return_messages=True, memory_key='chat_history')
 
