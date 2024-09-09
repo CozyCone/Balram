@@ -52,7 +52,7 @@ docs = text_splitter.split_documents(data)
 
 # Embedding
 
-embeddings = CohereEmbeddings(cohere_api_key=cohere_api_key)
+embeddings = CohereEmbeddings(cohere_api_key=cohere_api_key,model='embed-english-v3.0')
 vector = FAISS.from_documents(docs, embeddings)
 retriever = vector.as_retriever()
 
