@@ -56,7 +56,7 @@ embeddings = CohereEmbeddings(cohere_api_key=cohere_api_key,model='embed-english
 vector = FAISS.from_documents(docs, embeddings)
 retriever = vector.as_retriever()
 
-base_compressor = CohereRerank()
+base_compressor = CohereRerank(model='rerank-english-v3.0')
 
 compression_retriever = ContextualCompressionRetriever(base_compressor=base_compressor, base_retriever=retriever)
 
